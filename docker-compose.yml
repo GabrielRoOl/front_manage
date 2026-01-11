@@ -1,0 +1,14 @@
+services:
+  frontend:
+services:
+  server:
+    build: .
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/usr/src/app
+      # Esta linha abaixo é o segredo: ela impede que o node_modules 
+      # da sua máquina apague o do container
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
