@@ -1,59 +1,64 @@
 # FrontManage
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
+Este projeto foi criado com o [Angular CLI](https://github.com/angular/angular-cli) versão 21.0.5.
 
-## Development server
+## Servidor de desenvolvimento
 
-To start a local development server, run:
+Para iniciar o servidor local, execute:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abra o navegador em: http://localhost:4200/.
+A aplicação recarrega automaticamente ao salvar mudanças nos arquivos.
 
-## Code scaffolding
+## Gerar código (scaffolding)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Para criar um novo componente:
 
 ```bash
-ng generate component component-name
+ng generate component nome-do-componente
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Para ver todas as opções do gerador:
 
 ```bash
 ng generate --help
 ```
 
-## Building
+## Build (produção)
 
-To build the project run:
+Para gerar a build:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Os arquivos compilados ficarão em `dist/`. A build de produção aplica otimizações para melhor desempenho.
 
-## Running unit tests
+## Testes unitários
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Para rodar os testes unitários com o [Vitest](https://vitest.dev/):
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+## Testes end-to-end (E2E)
 
-For end-to-end (e2e) testing, run:
+Para testes E2E:
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+O Angular CLI não inclui uma ferramenta E2E por padrão — escolha a que preferir.
 
-## Additional Resources
+## Docker
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Para instruções de execução com Docker, veja o arquivo `README.Docker.md`.
+
+## Recursos
+
+- Documentação do Angular CLI: https://angular.dev/tools/cli

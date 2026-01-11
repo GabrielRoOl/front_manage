@@ -1,22 +1,26 @@
-### Building and running your application
+### Executando a aplicação com Docker
 
-When you're ready, start your application by running:
-`docker compose up --build`.
+Quando quiser iniciar a aplicação, execute:
+`docker compose up --build`
 
-Your application will be available at http://localhost:4200.
+A aplicação ficará disponível em: http://localhost:4200
 
-### Deploying your application to the cloud
+### Publicando a imagem na nuvem
 
-First, build your image, e.g.: `docker build -t myapp .`.
-If your cloud uses a different CPU architecture than your development
-machine (e.g., you are on a Mac M1 and your cloud provider is amd64),
-you'll want to build the image for that platform, e.g.:
-`docker build --platform=linux/amd64 -t myapp .`.
+1. Crie a imagem localmente:
 
-Then, push it to your registry, e.g. `docker push myregistry.com/myapp`.
+   `docker build -t meuapp .`
 
-Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharing/)
-docs for more detail on building and pushing.
+   Se a sua nuvem usar outra arquitetura (por exemplo: você em um Mac M1 e a nuvem for amd64), gere a imagem para essa plataforma:
 
-### References
-* [Docker's Node.js guide](https://docs.docker.com/language/nodejs/)
+   `docker build --platform=linux/amd64 -t meuapp .`
+
+2. Envie a imagem para o seu registro (substitua pelo seu endereço):
+
+   `docker push meu-registry.com/meuapp`
+
+Para mais detalhes sobre como criar e enviar imagens, consulte a documentação do Docker:
+https://docs.docker.com/get-started/
+
+### Referências
+* Guia do Docker para Node.js: https://docs.docker.com/language/nodejs/
