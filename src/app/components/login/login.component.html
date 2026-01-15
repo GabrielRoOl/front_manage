@@ -1,0 +1,24 @@
+<div class="login-root">
+  <form (ngSubmit)="submit()" [formGroup]="form" class="login-form">
+    <h2>Entrar</h2>
+
+    <label>
+      <span>Username</span>
+      <input formControlName="username" placeholder="username (opcional)" />
+    </label>
+
+    <label>
+      <span>Email</span>
+      <input formControlName="email" placeholder="email (opcional)" />
+    </label>
+
+    <label>
+      <span>Senha</span>
+      <input type="password" formControlName="password" placeholder="senha" />
+    </label>
+
+    <button type="submit" [disabled]="loading">{{ loading ? 'Entrando...' : 'Entrar' }}</button>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </form>
+</div>
