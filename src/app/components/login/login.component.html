@@ -1,24 +1,46 @@
 <div class="login-root">
-  <form (ngSubmit)="submit()" [formGroup]="form" class="login-form">
-    <h2>Entrar</h2>
+  <div *ngIf="!success" class="login-form">
+    <form (ngSubmit)="submit()" [formGroup]="form">
+      <div class="form-header">
+        <h2>Bem-vindo</h2>
+        <p>Faça login para continuar</p>
+      </div>
 
-    <label>
-      <span>Username</span>
-      <input formControlName="username" placeholder="username (opcional)" />
-    </label>
+      <div class="form-group">
+        <label>
+          <span class="label-text">📧 Email</span>
+          <input formControlName="email" placeholder="seu@email.com" />
+        </label>
+      </div>
 
-    <label>
-      <span>Email</span>
-      <input formControlName="email" placeholder="email (opcional)" />
-    </label>
+      <div class="form-group">
+        <label>
+          <span class="label-text">🔐 Senha</span>
+          <input type="password" formControlName="password" placeholder="sua senha" />
+        </label>
+      </div>
 
-    <label>
-      <span>Senha</span>
-      <input type="password" formControlName="password" placeholder="senha" />
-    </label>
+      <button type="submit" [disabled]="loading" class="submit-button">
+        <span *ngIf="!loading">Entrar</span>
+        <span *ngIf="loading">
+          <span class="spinner"></span> Entrando...
+        </span>
+      </button>
 
-    <button type="submit" [disabled]="loading">{{ loading ? 'Entrando...' : 'Entrar' }}</button>
+      <div class="error-container" *ngIf="error">
+        <div class="error-icon">⚠️</div>
+        <div class="error-content">
+          <p class="error-title">Erro ao fazer login</p>
+          <p class="error-message">{{ error }}</p>
+        </div>
+      </div>
+    </form>
+  </div>
 
-    <div class="error" *ngIf="error">{{ error }}</div>
-  </form>
+  <div *ngIf="success" class="success-message">
+    <div class="success-content">
+      <h2>{{ successMessage }}</h2>
+      <p>Redirecionando...</p>
+    </div>
+  </div>
 </div>

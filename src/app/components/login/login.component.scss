@@ -2,47 +2,219 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  width: 320px;
-  padding: 1.25rem;
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 380px;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   background: #fff;
+  animation: slideIn 0.4s ease;
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+
+    h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #333;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0.5rem 0 0 0;
+      font-size: 0.95rem;
+      color: #999;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    cursor: text;
+  }
+
+  .label-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  input {
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    font-size: 0.95rem;
+    color: #333;
+    transition: all 0.3s ease;
+    background: #fafafa;
+
+    &::placeholder {
+      color: #ccc;
+    }
+
+    &:hover {
+      background: #f5f5f5;
+      border-color: #d0d0d0;
+    }
+
+    &:focus {
+      outline: none;
+      background: #fff;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+  }
+
+  .submit-button {
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border: 0;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  .error-container {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #ffebee;
+    border-radius: 8px;
+    border-left: 4px solid #b00020;
+    align-items: flex-start;
+    animation: slideInError 0.3s ease;
+  }
+
+  .error-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .error-content {
+    flex: 1;
+  }
+
+  .error-title {
+    margin: 0 0 0.35rem 0;
+    color: #b00020;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .error-message {
+    margin: 0;
+    color: #8b0000;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    word-break: break-word;
+  }
 }
 
-.login-form h2 {
-  margin: 0 0 0.5rem 0;
-}
-
-.login-form label {
+.success-message {
   display: flex;
-  flex-direction: column;
-  font-size: 0.9rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.login-form input {
-  padding: 0.5rem 0.6rem;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+.success-content {
+  text-align: center;
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.4s ease;
+
+  h2 {
+    margin: 0 0 1rem 0;
+    color: #4caf50;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+  }
 }
 
-.login-form button {
-  padding: 0.6rem 0.75rem;
-  border: 0;
-  border-radius: 6px;
-  background: #3366ff;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.login-form .error {
-  color: #b00020;
-  font-size: 0.9rem;
+@keyframes slideInError {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
