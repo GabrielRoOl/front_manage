@@ -23,7 +23,7 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -122,7 +122,7 @@ export class LoginComponent {
     this.form = this.fb.group({
       // Campo email (opcional - sem validadores)
       email: [''],
-      
+
       // Campo password (obrigatório - precisa ser preenchido)
       // Validators.required = não pode estar vazio
       password: ['', [Validators.required]]
@@ -191,7 +191,7 @@ export class LoginComponent {
 
     } catch (err: any) {
       // PASSO 9: Tratamento de erros
-      
+
       // Extrai mensagem de erro do servidor
       // ErrorParserService trata múltiplos formatos de erro
       // Exemplos:

@@ -196,7 +196,8 @@ export class App {
    * 
    * constructor(private auth: AuthService) {}
    * 
-   * Mas este componente raiz não precisa de lógica especial,
+   * Mas este componente raiz não precisa de lógica especial
+   * ,
    * apenas renderiza o layout base.
    */
 }

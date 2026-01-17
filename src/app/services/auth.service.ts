@@ -42,7 +42,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { LoginRequest, AuthResponse } from '../models/auth.model';
+import { AuthResponse, LoginRequest } from '../models/auth.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
