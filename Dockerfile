@@ -1,21 +1,30 @@
-ARG NODE_VERSION=20
-FROM node:${NODE_VERSION}-alpine
+FROM node:20-alpine as build
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Instalamos o Angular CLI globalmente para evitar o erro de "not found"
-RUN npm install -g @angular/cli
-
-# Copiamos apenas os arquivos de dependências primeiro
 COPY package*.json ./
-
-# Instalamos as dependências
 RUN npm install
 
-# Copiamos o restante do código
 COPY . .
 
-EXPOSE 4200
+RUN npm run build
 
-# Usamos o comando direto do angular cli
-CMD ["ng", "serve", "--host", "0.0.0.0", "--poll", "2000"]
+FROM nginx:alpine
+
+RUN rm -rf /usr/share/nginx/html/*
+
+
+COPY --from=build /app/dist/front_manage/browser /usr/share/nginx/html
+
+RUN echo 'server { \
+    listen 80; \
+    root /usr/share/nginx/html; \
+    index index.html; \
+    location / { \
+    try_files $uri $uri/ /index.html; \
+    } \
+    }' > /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
